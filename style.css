@@ -188,8 +188,6 @@ gap:5px;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10px;
-    margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
     cursor: pointer;
@@ -343,4 +341,5 @@ color: #d2d2d2;
     padding: 0;
     margin: 0;
     text-align: center;
+
 }
