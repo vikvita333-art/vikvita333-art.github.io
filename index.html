@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+<link rel="stylesheet" href="style.css"> 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=BBH+Sans+Bartle&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<title>Calendar</title> 
+</head>
+<body>
+    <script>
+        
+        </script>
+    <div class="grid">
+<header class="a">
+        <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/L5ntkLbd/36-20251010100704-032818.png' border='0' alt='36-20251010100704-032818' class="icon"/></a>
+    <h1 class="akasha">AKASHA</h1>
+</header>
+<div class="grid1">
+    <img src="https://i.pinimg.com/736x/f1/4c/85/f14c8596a1b17ff421be0fb9fa5711e3.jpg" id="nahida"/>
+    <main>
+        <div class="calendar" class="b">
+    <!-- НОВОЕ: Постоянное окошко с заметками на сегодня -->
+    <div class="today-notes-widget" id="todayNotesWidget">
+            <h3>Список дел путешественника <br>(<span id="todayDateWidget"></span>):</h3>
+            <ul id="todayNotesList">
+                <li>На сегодня дел нет! Выходной!</li>
+            </ul>
+        </div>
+        <div class="header">
+            <button id="prevBtn"> 
+                <i class="fa-solid fa-chevron-left"></i> 
+            </button> 
+            <div class="monthYear" id="monthYear"></div> 
+            <button id="nextBtn"> 
+                <i class="fa-solid fa-chevron-right"></i> 
+            </button>
+        </div> 
+        <div class="days"> 
+            <div class="day">Пон</div> 
+            <div class="day">Втр</div> 
+            <div class="day">Срд</div> 
+            <div class="day">Чтв</div> 
+            <div class="day">Птн</div> 
+            <div class="day">Сбт</div> 
+            <div class="day">Вск</div> 
+        </div> 
+        <div class="dates" id="dates"></div>
+    </div>
+    
+</div> 
+<!-- Модальное окно для заметки -->
+<div class="note-modal" id="noteModal">
+    <div class="modal-content">
+        <h3 id="noteDateDisplay">Заметка для: </h3>
+        <textarea id="noteInput" placeholder="Введите вашу заметку здесь..." rows="5"></textarea>
+        <div class="modal-buttons">
+            <button id="saveNoteBtn">Сохранить</button>
+            <button id="cancelNoteBtn">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<!-- КОНЕЦ НОВОГО -->
+<!-- КОНЕЦ МОДАЛЬНОГО ОКНА -->
+<script src="1.js"></script>
+</main> 
+</body>
+</html>
