@@ -188,6 +188,8 @@ gap:5px;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 10px;
+    margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
     cursor: pointer;
@@ -253,13 +255,13 @@ color: #d2d2d2;
     color: rgb(184, 163, 153);
     cursor: not-allowed;
 }
-#nahida{
+#nahida {
     border-right: 7px solid rgb(117, 79, 44);
     position: fixed;
     z-index: 2;
     height: 90vh; 
+    width: auto; /* Позволяет ширине подстраиваться под высоту, сохраняя пропорции */
 }
-
 .window{
     display: none;  
     
@@ -341,5 +343,4 @@ color: #d2d2d2;
     padding: 0;
     margin: 0;
     text-align: center;
-
 }
