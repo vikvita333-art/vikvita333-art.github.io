@@ -1,25 +1,27 @@
 {
-  "background_color": "#ffffff",
-  "dir": "ltr",
-  "display": "standalone",
-  "name": "vikvita333-art.github",
-  "orientation": "any",
-  "scope": "/",
-  "short_name": "vikvita333-art.github",
-  "start_url": "/",
-  "theme_color": "#ffffff",
+  "name": "AKASHA Calendar",              // Более читаемое и понятное имя приложения
+  "short_name": "AKASHA",                 // Короткое имя для ярлыков на рабочем столе
+  "description": "Ваш персональный календарь путешественника", // НОВОЕ: Добавьте описание приложения
+  "start_url": "/",                       // URL, который загружается при запуске PWA
+  "display": "standalone",                // Запускается как отдельное приложение (без адресной строки браузера)
+  "background_color": "#ffffff",          // Цвет фона для экрана-заставки
+  "theme_color": "#ffffff",               // Цвет темы для адресной строки браузера
+  "orientation": "any",                   // Разрешить любую ориентацию (портретную/ландшафтную)
+  "scope": "/",                           // Область действия PWA (обычно корень сайта)
+  "lang": "ru-RU",                        // НОВОЕ: Указываем язык
+  "dir": "ltr",                           // Направление текста (слева направо)
   "icons": [
     {
-      "src": "https://vikvita333-art.github.io/AppImages.zip",
-      "type": "image/x-icon",
-      "isSquare": false,
-      "isPng": true,
-      "isWebp": false,
-      "isJpg": false,
-      "width": 0,
-      "is512x512": true,
-      "is256x256": false,
-      "is192x192": true
+      "src": "/icon-192x192.png",         // ИСПРАВЛЕНО: Прямая ссылка на PNG-файл
+      "sizes": "192x192",                 // ИСПРАВЛЕНО: Стандартное поле для размеров
+      "type": "image/png",
+      "purpose": "any"                    // НОВОЕ: Иконка для любого контекста
+    },
+    {
+      "src": "/icon-512x512.png",         // ИСПРАВЛЕНО: Прямая ссылка на PNG-файл
+      "sizes": "512x512",                 // ИСПРАВЛЕНО: Стандартное поле для размеров
+      "type": "image/png",
+      "purpose": "any maskable"           // НОВОЕ: Иконка, которая может быть обрезана для адаптивных форм (например, на Android)
     }
   ]
 }
