@@ -17,8 +17,10 @@
 </head>
 <body>
     <script>
-        
-        </script>
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('sw.js')
+  }
+</script>
     <div class="grid">
 <header class="a">
      <img src='star.png' border='0' alt='star' class="icon"/></a>
@@ -76,6 +78,7 @@
 </body>
 
 </html>
+
 
 
 
