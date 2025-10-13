@@ -13,11 +13,11 @@
       "src": "https://vikvita333-art.github.io/star.png",
       "type": "image/x-icon",
       "isSquare": false,
-      "isPng": false,
+      "isPng": true,
       "isWebp": false,
       "isJpg": false,
       "width": 0,
-      "is512x512": false,
+      "is512x512": true,
       "is256x256": false,
       "is192x192": false
     }
