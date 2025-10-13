@@ -17,9 +17,16 @@
 </head>
 <body>
     <script>
-  if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('sw.js')
-  }
+ if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('Service Worker зарегистрирован с областью:', registration.scope);
+      }).catch(error => {
+        console.error('Ошибка регистрации Service Worker:', error);
+      });
+  });
+}
 </script>
     <div class="grid">
 <header class="a">
@@ -78,6 +85,7 @@
 </body>
 
 </html>
+
 
 
 
