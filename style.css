@@ -1,5 +1,5 @@
 .note-modal {
-    position: fixed;
+    position: absolute;
     z-index: 1000; /* Самое высокое значение, чтобы быть поверх всего, включая виджет заметок */
     left: 0;
     top: 0;
@@ -128,6 +128,8 @@ background-size: 100vmax;
 margin-left:20px;
 }
 .calendar { 
+position: fixed;
+z-index: 4;
 width: 50%; 
 height: 80%; 
 display: flex; 
@@ -138,7 +140,7 @@ background-size: 100%;
 background-repeat: repeat-y;
 border-radius: 10px; 
 box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
-margin-right:1vw;
+margin-right:1%;
 }
 .header{ 
 display: flex; 
@@ -266,7 +268,7 @@ color: #d2d2d2;
     display: none;  
     
     border-radius: 10px; 
-    position: fixed; /* Фиксированное позиционирование */
+    position: absolute; /* Фиксированное позиционирование */
     z-index: 998; /* Находится поверх других элементов */
     left: 0;
     top: 0;
@@ -286,18 +288,19 @@ color: #d2d2d2;
     background-color: #ffa42e83
 }
 .today-notes-widget {
-  position: fixed;
+    position: fixed;
     top: 8%;
-    right: 1vw;
+    right: 20px;
     max-height: 90%;
-    width: 23vw;
+    width: 20%;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 999; /* Выше основного контента (который обычно имеет z-index 0 или auto), но ниже модального окна (1000) */
     overflow-y: auto;
+}
 
 .today-notes-widget h3 {
     margin-top: 0;
@@ -344,4 +347,352 @@ color: #d2d2d2;
     text-align: center;
 }
 
+.note-modal {
+    position: absolute;
+    z-index: 1000; /* Самое высокое значение, чтобы быть поверх всего, включая виджет заметок */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    display: none; /* Скрыто по умолчанию */
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.modal-content textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#saveNoteBtn {
+    background-color: rgb(190, 211, 143);
+    color: white;
+}
+
+#saveNoteBtn:hover {
+    background-color: rgb(141, 158, 103);
+}
+
+#cancelNoteBtn {
+    background-color: #8a6b5e;
+    color: white;
+}
+
+#cancelNoteBtn:hover {
+    background-color: rgb(110, 66, 63);
+}
+
+*{ 
+margin: 0; 
+padding: 0; 
+box-sizing: border-box; 
+font-family: "Shantell Sans", cursive;
+} 
+
+header{
+position: absolute;
+z-index: 3;
+ position: sticky;
+ top: 0;
+ min-width:100vw;
+ min-height:10vh;
+ display: flex; 
+ align-items: center; 
+ justify-content:flex-start;
+ background: #464e33;
+}
+
+.akasha{
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+    cursor: auto;
+    
+    font-size: 50px;
+    color:rgb(255, 249, 168);
+}
+
+.icon{
+    height:50px;
+    width:50px;
+    margin-left: 20px;
+    margin-right: 10px;
+    display: flex; 
+ align-items: center; 
+ justify-content:center;
+}
+body{
+    background-color: rgb(163, 180, 143);
+}
+main {
+position: relative;
+z-index: 1;
+min-height: 90vh; 
+display: flex; 
+align-items: center; 
+justify-content:center; 
+background-color: rgb(163, 180, 143);
+background-size: 100vmax;
+margin-left:20px;
+}
+.calendar { 
+position: fixed;
+z-index: 4;
+width: 50%; 
+height: 80%; 
+display: flex; 
+flex-direction: column; 
+padding: 10px; 
+background-image: linear-gradient(rgb(230, 213, 201), white);
+background-size: 100%;
+background-repeat: repeat-y;
+border-radius: 10px; 
+box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
+margin-right:1%;
+}
+.header{ 
+display: flex; 
+align-items:center ; 
+justify-content: space-between;
+padding: 10px; 
+}
+.monthYear{ 
+text-transform: uppercase;
+text-align:center ; 
+font-weight: 600;
+font-size: xx-large;
+
+width:300px; 
+}
+.header button { 
+display: flex; 
+color: #f8ead7;
+align-items: center; 
+justify-content: center; 
+border: none; 
+border-radius: 50%; 
+background:rgb(102, 101, 80); 
+cursor: pointer; 
+width: 40px; 
+height: 40px; 
+box-shadow: 0 0 4px rgba(0,0,0,0.2); 
+}
+.days { 
+display: grid; 
+grid-template-columns: repeat(7,1fr); 
+} 
+.day { 
+text-align: center; 
+color: rgb(90, 75, 58); 
+font-weight: 1000; 
+}
+.dates{
+font-size: 20px;
+display: grid; 
+grid-template-columns: repeat(7,1fr); 
+color: rgb(90, 75, 58); 
+gap:5px;
+}
+.date{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    transition: 0.2s;
+}
+.date:hover,
+.date.active {
+background: #ffc558;
+color:#fff;
+}
+.date.inactive{
+color: #d2d2d2;
+}
+/* Стиль для активного (сегодняшнего) дня */
+.date.active {
+    background-color: #375e41; /* Пример: синий фон */
+    color: white;
+    border-radius: 50%;
+}
+
+/* Стиль для даты с заметкой */
+.date.has-note {
+    position: relative; /* Чтобы можно было позиционировать псевдоэлемент */
+    background-color: #d3b998; /* Легкий голубой фон, например */
+}
+
+/* Маленькая точка или индикатор для даты с заметкой */
+.date.has-note::after {
+    content: ''; /* Обязателен для псевдоэлементов */
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 6px; /* Размер точки */
+    height: 6px;
+    background-color: #ffc558; /* Красный цвет */
+    border-radius: 50%; /* Круглая форма */
+    box-shadow: 0 0 3px rgba(0,0,0,0.3); /* Легкая тень для видимости */
+}
+
+/* Убедитесь, что .date имеет достаточную высоту и ширину, чтобы точка была видна */
+.date {
+    width: 40px; /* Пример, adjust if needed */
+    height: 40px; /* Пример, adjust if needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Для обозначения интерактивности */
+}
+
+.date:hover:not(.inactive) {
+    background-color: #ffc558;
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+}
+
+.date.inactive {
+    
+    color: rgb(184, 163, 153);
+    cursor: not-allowed;
+}
+#nahida {
+    border-right: 7px solid rgb(117, 79, 44);
+    position: fixed;
+    z-index: 2;
+    height: 90vh; 
+    width: auto; /* Позволяет ширине подстраиваться под высоту, сохраняя пропорции */
+}
+.window{
+    display: none;  
+    
+    border-radius: 10px; 
+    position: absolute; /* Фиксированное позиционирование */
+    z-index: 998; /* Находится поверх других элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Включаем прокрутку при необходимости */
+    background-color: rgba(0,0,0,0.4); /* Цвет фона с прозрачностью */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Центрируем окно */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ширина окна */
+}
+.modal-content::selection{
+    background-color: #ffa42e83
+}
+.today-notes-widget {
+    position: fixed;
+    top: 8%;
+    right: 20px;
+    max-height: 90%;
+    width: 20%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 999; /* Выше основного контента (который обычно имеет z-index 0 или auto), но ниже модального окна (1000) */
+    overflow-y: auto;
+}
+
+.today-notes-widget h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.today-notes-widget ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.today-notes-widget li {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    color: #555;
+    word-wrap: break-word; /* Перенос длинных слов */
+    white-space: pre-wrap;
+}
+.today-notes-widget li::selection{
+    background-color: #ffa42e83;
+}
+.today-notes-widget li:last-child {
+    margin-bottom: 0;
+}
+
+/* Стили для случая, когда заметок нет */
+.today-notes-widget ul.no-notes li {
+    font-style: italic;
+    color: #888;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
 
