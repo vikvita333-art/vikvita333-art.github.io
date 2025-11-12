@@ -8,14 +8,21 @@ const noteDateDisplay = document.getElementById('noteDateDisplay');
 const noteInput = document.getElementById('noteInput');
 const saveNoteBtn = document.getElementById('saveNoteBtn');
 const cancelNoteBtn = document.getElementById('cancelNoteBtn');
+
+// === НОВЫЕ ССЫЛКИ НА ЭЛЕМЕНТЫ ВИДЖЕТА ЗАМЕТОК НА СЕГОДНЯ ===
 const todayNotesWidget = document.getElementById('todayNotesWidget');
 const todayDateWidget = document.getElementById('todayDateWidget');
 const todayNotesList = document.getElementById('todayNotesList');
-
+// ==========================================================
+const nahida = document.getElementById('nahida');
 let currentDate = new Date();
 let notes = []; 
 let currentEditingDate = null; 
-
+//const myAudio1 = new Audio('path/to/your/audio.mp3');
+//const myAudio2 = new Audio('path/to/your/audio.mp3');
+//const myAudio3 = new Audio('path/to/your/audio.mp3');
+//const myAudio4 = new Audio('path/to/your/audio.mp3');
+//const myAudio5 = new Audio('path/to/your/audio.mp3');
 function loadNotes() {
     const savedNotes = localStorage.getItem('calendarNotes');
     if (savedNotes) {
@@ -78,8 +85,10 @@ const updateCalendar = () => {
     }
 
     datesElement.innerHTML = datesHTML;
+
+    // === НОВЫЙ ВЫЗОВ: Обновляем виджет заметок после обновления календаря ===
     updateTodayNotesWidget();
-  
+    // ======================================================================
 };
 
 // === НОВАЯ ФУНКЦИЯ: Обновление виджета заметок на сегодня ===
@@ -108,6 +117,7 @@ const updateTodayNotesWidget = () => {
         todayNotesList.appendChild(li);
     }
 };
+// ===========================================================
 
 
 datesElement.addEventListener('click', (event) => {
@@ -170,7 +180,11 @@ nextBtn.addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() + 1);
     updateCalendar();
 });
+nahida.addEventListener('click', () => {
+
+    window.location.href = `https://htmlacademy.ru/courses/309/run/${Math.floor((Math.random() * 5)+1)}`;
+    updateCalendar();
+});
 
 loadNotes();
-
 updateCalendar(); // Инициализируем календарь и виджет при загрузке
