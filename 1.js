@@ -8,12 +8,9 @@ const noteDateDisplay = document.getElementById('noteDateDisplay');
 const noteInput = document.getElementById('noteInput');
 const saveNoteBtn = document.getElementById('saveNoteBtn');
 const cancelNoteBtn = document.getElementById('cancelNoteBtn');
-
-// === НОВЫЕ ССЫЛКИ НА ЭЛЕМЕНТЫ ВИДЖЕТА ЗАМЕТОК НА СЕГОДНЯ ===
 const todayNotesWidget = document.getElementById('todayNotesWidget');
 const todayDateWidget = document.getElementById('todayDateWidget');
 const todayNotesList = document.getElementById('todayNotesList');
-// ==========================================================
 
 let currentDate = new Date();
 let notes = []; 
@@ -81,10 +78,8 @@ const updateCalendar = () => {
     }
 
     datesElement.innerHTML = datesHTML;
-
-    // === НОВЫЙ ВЫЗОВ: Обновляем виджет заметок после обновления календаря ===
     updateTodayNotesWidget();
-    // ======================================================================
+  
 };
 
 // === НОВАЯ ФУНКЦИЯ: Обновление виджета заметок на сегодня ===
@@ -113,7 +108,6 @@ const updateTodayNotesWidget = () => {
         todayNotesList.appendChild(li);
     }
 };
-// ===========================================================
 
 
 datesElement.addEventListener('click', (event) => {
@@ -178,4 +172,5 @@ nextBtn.addEventListener('click', () => {
 });
 
 loadNotes();
+
 updateCalendar(); // Инициализируем календарь и виджет при загрузке
