@@ -135,6 +135,7 @@ datesElement.addEventListener('click', (event) => {
 
         noteModal.style.display = 'flex';
         noteInput.focus();
+        console.log(noteModal.style.display)
     }
 });
 
