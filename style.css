@@ -356,6 +356,9 @@ border: none;
  }
 }
 @media (max-aspect-ratio: 1007/1394) {
+.dates{
+grid-template-columns: repeat(7); 
+}
     main { 
 justify-content:unset;
 align-items: unset; 
@@ -381,5 +384,9 @@ align-items: unset;
 }
 .date{
     padding: 0.5vh;
+    height: 3vh;
+    margin-top:3vh;
+    margin-bottom:3vh;
+    width:3vh;
 } 
 }
