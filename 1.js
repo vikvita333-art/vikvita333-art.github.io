@@ -18,11 +18,11 @@ const nahida = document.getElementById('nahida');
 let currentDate = new Date();
 let notes = []; 
 let currentEditingDate = null; 
-//const myAudio1 = new Audio('path/to/your/audio.mp3');
-//const myAudio2 = new Audio('path/to/your/audio.mp3');
-//const myAudio3 = new Audio('path/to/your/audio.mp3');
-//const myAudio4 = new Audio('path/to/your/audio.mp3');
-//const myAudio5 = new Audio('path/to/your/audio.mp3');
+const myAudio1 = new Audio('/audio(2).mp3');
+const myAudio2 = new Audio('/audio(3).mp3');
+const myAudio3 = new Audio('/audio(4).mp3');
+const myAudio4 = new Audio('/audio(5).mp3');
+const myAudio5 = new Audio('/audio(6).mp3');
 function loadNotes() {
     const savedNotes = localStorage.getItem('calendarNotes');
     if (savedNotes) {
@@ -135,7 +135,6 @@ datesElement.addEventListener('click', (event) => {
 
         noteModal.style.display = 'flex';
         noteInput.focus();
-        console.log(noteModal.style.display)
     }
 });
 
@@ -182,8 +181,8 @@ nextBtn.addEventListener('click', () => {
     updateCalendar();
 });
 nahida.addEventListener('click', () => {
-
-    window.location.href = `https://htmlacademy.ru/courses/309/run/${Math.floor((Math.random() * 5)+1)}`;
+    `myAudio${Math.floor((Math.random() * 5)+1)}`.play();
+   
     updateCalendar();
 });
 
