@@ -349,18 +349,17 @@ background:none;
 /* Стили для постоянного окна заметок выбранного дня */
 .selected-day-notes {
     position: fixed;
-    top: 12%;
+    top: 12.5%;
     right: 20px;
     max-height: 90%;
-    width: 20%;
+    width: 22%;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 3vh;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 998; /* Ниже виджета сегодняшних заметок */
-    overflow-y: auto;
-}
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 998;
+    overflow-y: auto;}
 
 .selected-day-notes h3 {
     margin-top: 0;
@@ -462,3 +461,4 @@ align-items: unset;
     width:3vh;
 } 
 }
+
