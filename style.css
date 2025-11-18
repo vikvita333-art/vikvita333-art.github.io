@@ -1,4 +1,3 @@
-
 .note-modal {
     position: absolute;
     z-index: 1000; /* Самое высокое значение, чтобы быть поверх всего, включая виджет заметок */
@@ -286,6 +285,7 @@ color: #d2d2d2;
     background-color: #ffa42e83
 }
 .today-notes-widget {
+    display: none;
     position: fixed;
     top: 12%;
     right: 20px;
@@ -345,6 +345,69 @@ color: #d2d2d2;
     text-align: center;
 }
 
+/* Стили для постоянного окна заметок выбранного дня */
+.selected-day-notes {
+    position: fixed;
+    top: 12%;
+    right: 20px;
+    max-height: 90%;
+    width: 20%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 3vh;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 998; /* Ниже виджета сегодняшних заметок */
+    overflow-y: auto;
+}
+
+.selected-day-notes h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.note-content {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
+    min-height: 5vh;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.note-content p {
+    margin: 0;
+    font-style: italic;
+    color: #888;
+    text-align: center;
+}
+
+#editSelectedNoteBtn {
+    background-color: rgb(190, 211, 143);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#editSelectedNoteBtn:hover {
+    background-color: rgb(141, 158, 103);
+}
+
 @media (max-aspect-ratio: 1610/816) {
 #nahida {
 width:0px;
@@ -363,19 +426,24 @@ grid-template-columns: repeat(7);
 justify-content:unset;
 align-items: unset; 
 }
-    .today-notes-widget {
-       top: auto; right: auto;
-        left:5vw;
-       bottom:0;
-       height: 17vh;
-       max-height: 35%;
-       width: 90%;
+   
+    .selected-day-notes {
+        top: auto; right: auto;left:5vw;
+        bottom:0;
+        margin-top: 20px;
+        height: 20vh;
+        max-height: none;
+        width: 90%;
     }
-    .calendar{
-    height: 70vh;
-    left:5vw;
-    width: 90%; 
- }
+    
+
+    
+    .calendar {
+        margin-bottom: 20px;
+        height: 65vh;
+        left:5vw;
+        width: 90%; 
+    }
  .monthYear{
     font-size: 2.5vh;
  }
