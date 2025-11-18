@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=BBH+Sans+Bartle&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-     <link  href=”/star.webp” type="short icon">
+     <link  href=”/star.png” type="short icon">
 <title>akasha-time-manager</title> 
 </head>
 <body>
@@ -28,15 +28,14 @@
 </script>
 <div class="grid1">
 <header class="a">
-     <img src='star.webp' border='0' alt='star' class="icon"/></a>
+     <img src='star.png' border='0' alt='star' class="icon"/></a>
     <h1 class="akasha">AKASHA</h1>
 </header>
 
     <video src="video_2025-10-11_18-12-40.mp4" muted autoplay loop id="nahida"></video>
     <main>
         <div class="calendar">
-    <!-- НОВОЕ: Постоянное окошко с заметками на сегодня -->
-    <div class="today-notes-widget" id="todayNotesWidget">
+        <div class="today-notes-widget" id="todayNotesWidget">
             <h3>Список дел путешественника <br>(<span id="todayDateWidget"></span>):</h3>
             <ul id="todayNotesList">
                 <li>На сегодня дел нет! Выходной!</li>
@@ -63,7 +62,19 @@
         <div class="dates" id="dates"></div>
     
 </div> 
-<!-- Модальное окно для заметки -->
+
+<!-- Окно для заметок выбранного дня -->
+<div class="selected-day-notes" id="selectedDayNotes">
+    <h3>Заметки на <span id="selectedDateDisplay"></span>:</h3>
+    <div id="selectedNoteContent" class="note-content">
+        <p>Выберите дату для просмотра заметок</p>
+    </div>
+    <div class="modal-buttons">
+        <button id="editSelectedNoteBtn" style="display: none;">Редактировать заметку</button>
+    </div>
+</div>
+
+<!-- Модальное окно для редактирования заметки -->
 <div class="note-modal" id="noteModal">
     <div class="modal-content">
         <h3 id="noteDateDisplay">Заметка для: </h3>
@@ -75,24 +86,7 @@
     </div>
 </div>
 
-<!-- КОНЕЦ НОВОГО -->
-<!-- КОНЕЦ МОДАЛЬНОГО ОКНА -->
 <script src="1.js"></script>
 </main> 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
