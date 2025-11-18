@@ -212,6 +212,7 @@ color:#fff;
 }
 .date.inactive{
 color: #d2d2d2;
+background:none;
 }
 /* Стиль для активного (сегодняшнего) дня */
 .date.active {
@@ -428,12 +429,15 @@ align-items: unset;
 }
    
     .selected-day-notes {
-        top: auto; right: auto;left:5vw;
-        bottom:0;
+        top: auto;
+        right: auto;
+        left: 5vw;
+        bottom: 0;
         margin-top: 20px;
-        height: 20vh;
+        height: 22vh;
         max-height: none;
         width: 90%;
+        margin-bottom: 1vh;
     }
     
 
