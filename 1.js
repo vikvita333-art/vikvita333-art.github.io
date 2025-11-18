@@ -9,20 +9,29 @@ const noteInput = document.getElementById('noteInput');
 const saveNoteBtn = document.getElementById('saveNoteBtn');
 const cancelNoteBtn = document.getElementById('cancelNoteBtn');
 
-// === НОВЫЕ ССЫЛКИ НА ЭЛЕМЕНТЫ ВИДЖЕТА ЗАМЕТОК НА СЕГОДНЯ ===
+// === ССЫЛКИ НА ЭЛЕМЕНТЫ ВИДЖЕТА ЗАМЕТОК НА СЕГОДНЯ ===
 const todayNotesWidget = document.getElementById('todayNotesWidget');
 const todayDateWidget = document.getElementById('todayDateWidget');
 const todayNotesList = document.getElementById('todayNotesList');
-// ==========================================================
+
+// === ССЫЛКИ НА ЭЛЕМЕНТЫ ОКНА ВЫБРАННОГО ДНЯ ===
+const selectedDayNotes = document.getElementById('selectedDayNotes');
+const selectedDateDisplay = document.getElementById('selectedDateDisplay');
+const selectedNoteContent = document.getElementById('selectedNoteContent');
+const editSelectedNoteBtn = document.getElementById('editSelectedNoteBtn');
+
 const nahida = document.getElementById('nahida');
 let currentDate = new Date();
 let notes = []; 
-let currentEditingDate = null; 
+let currentEditingDate = null;
+let currentlySelectedDate = null;
+
 const myAudio1 = new Audio('/audio(2).mp3');
 const myAudio2 = new Audio('/audio(3).mp3');
 const myAudio3 = new Audio('/audio(4).mp3');
 const myAudio4 = new Audio('/audio(5).mp3');
 const myAudio5 = new Audio('/audio(6).mp3');
+
 function loadNotes() {
     const savedNotes = localStorage.getItem('calendarNotes');
     if (savedNotes) {
@@ -86,12 +95,11 @@ const updateCalendar = () => {
 
     datesElement.innerHTML = datesHTML;
 
-    // === НОВЫЙ ВЫЗОВ: Обновляем виджет заметок после обновления календаря ===
+    // Обновляем виджет заметок после обновления календаря
     updateTodayNotesWidget();
-    // ======================================================================
 };
 
-// === НОВАЯ ФУНКЦИЯ: Обновление виджета заметок на сегодня ===
+// Функция для обновления виджета заметок на сегодня
 const updateTodayNotesWidget = () => {
     const today = new Date();
     const formattedToday = formatDateToISO(today);
@@ -117,27 +125,61 @@ const updateTodayNotesWidget = () => {
         todayNotesList.appendChild(li);
     }
 };
-// ===========================================================
 
+// Функция для обновления окна заметок выбранного дня
+function updateSelectedDayNotes(fullDate) {
+    currentlySelectedDate = fullDate;
+    const date = new Date(fullDate);
+    const formattedDate = date.toLocaleDateString('ru-RU', { 
+        day: 'numeric', 
+        month: 'long',
+        year: 'numeric'
+    });
+    
+    selectedDateDisplay.textContent = formattedDate;
+    
+    const existingNote = notes.find(note => note.date === fullDate);
+    
+    if (existingNote && existingNote.note.trim() !== '') {
+        selectedNoteContent.innerHTML = `<p>${existingNote.note}</p>`;
+        editSelectedNoteBtn.style.display = 'block';
+    } else {
+        selectedNoteContent.innerHTML = '<p>На этот день заметок нет</p>';
+        editSelectedNoteBtn.style.display = 'block';
+    }
+}
 
+// Функция для открытия модального окна редактирования
+function openNoteEditor(fullDate) {
+    const existingNote = notes.find(note => note.date === fullDate);
+    let initialNoteText = existingNote ? existingNote.note : '';
+    
+    noteDateDisplay.textContent = `Заметка для: ${fullDate}`;
+    noteInput.value = initialNoteText;
+    currentEditingDate = fullDate;
+    
+    noteModal.style.display = 'flex';
+    noteInput.focus();
+}
+
+// Обработчик клика по датам - только обновляет окно заметок
 datesElement.addEventListener('click', (event) => {
     const clickedDateElement = event.target.closest('.date:not(.inactive)');
-
+    
     if (clickedDateElement) {
         const fullDate = clickedDateElement.dataset.date;
-        currentEditingDate = fullDate;
-
-        const existingNote = notes.find(note => note.date === fullDate);
-        let initialNoteText = existingNote ? existingNote.note : '';
-
-        noteDateDisplay.textContent = `Заметка для: ${fullDate}`;
-        noteInput.value = initialNoteText;
-
-        noteModal.style.display = 'flex';
-        noteInput.focus();
+        updateSelectedDayNotes(fullDate);
     }
 });
 
+// Обработчик кнопки редактирования в окне выбранного дня
+editSelectedNoteBtn.addEventListener('click', () => {
+    if (currentlySelectedDate) {
+        openNoteEditor(currentlySelectedDate);
+    }
+});
+
+// Обработчик сохранения заметки
 saveNoteBtn.addEventListener('click', () => {
     const userNote = noteInput.value.trim();
     const fullDate = currentEditingDate;
@@ -158,19 +200,22 @@ saveNoteBtn.addEventListener('click', () => {
 
     saveNotes();
     console.log('Текущие заметки:', notes);
-    updateCalendar(); // updateCalendar вызывает updateTodayNotesWidget
+    updateCalendar();
+    updateSelectedDayNotes(fullDate); // Обновляем окно заметок
 
     noteModal.style.display = 'none';
     noteInput.value = '';
     currentEditingDate = null;
 });
 
+// Обработчик отмены редактирования
 cancelNoteBtn.addEventListener('click', () => {
     noteModal.style.display = 'none';
     noteInput.value = '';
     currentEditingDate = null;
 });
 
+// Обработчики кнопок навигации
 prevBtn.addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
     updateCalendar();
@@ -180,11 +225,22 @@ nextBtn.addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() + 1);
     updateCalendar();
 });
+
+// Обработчик клика по Нахиде
 nahida.addEventListener('click', () => {
-    `myAudio${Math.floor((Math.random() * 5)+1)}`.play();
-   
+    const randomAudio = Math.floor((Math.random() * 5) + 1);
+    if (randomAudio === 1) myAudio1.play();
+    else if (randomAudio === 2) myAudio2.play();
+    else if (randomAudio === 3) myAudio3.play();
+    else if (randomAudio === 4) myAudio4.play();
+    else if (randomAudio === 5) myAudio5.play();
+    
     updateCalendar();
 });
 
+// Инициализация при загрузке
 loadNotes();
-updateCalendar(); // Инициализируем календарь и виджет при загрузке
+updateCalendar();
+
+// Показываем заметки на сегодня при первой загрузке
+updateSelectedDayNotes(formatDateToISO(new Date()));
