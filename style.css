@@ -141,7 +141,6 @@ background-size: 100%;
 background-repeat: repeat-y;
 border-radius: 10px; 
 box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
-margin-top:1%;
 margin-right:1%;
 }
 .header{ 
@@ -461,4 +460,5 @@ align-items: unset;
     width:3vh;
 } 
 }
+
 
