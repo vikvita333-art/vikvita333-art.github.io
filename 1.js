@@ -24,7 +24,6 @@ const editSelectedNoteBtn = document.getElementById('editSelectedNoteBtn');
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const hamburgerContent = document.getElementById('hamburgerContent');
 const menuLink1 = document.getElementById('menuLink1');
-const menuLink2 = document.getElementById('menuLink2');
 const menuLink3 = document.getElementById('menuLink3');
 const menuLink4 = document.getElementById('menuLink4');
 
@@ -293,11 +292,6 @@ if (auth.style.display == 'flex'){auth.style.display = 'none';}else {auth.style.
 cross.addEventListener('click', (event) => {
     auth.style.display = 'none';
 });
-menuLink2.addEventListener('click', (event) => {
-    event.preventDefault();
-    alert('Ссылка 2 нажата');
-    });
-
 menuLink3.addEventListener('click', (event) => {
     event.preventDefault();
     Projectshadow.style.display = 'flex';
@@ -649,3 +643,4 @@ loadNotes();
 updateCalendar();
 updateSelectedDayNotes(formatDateToISO(new Date()));
 checkAuthAndSync(); // Добавь этот вызов
+
