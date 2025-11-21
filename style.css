@@ -103,7 +103,10 @@ z-index: 3;
     font-size: 50px;
     color:rgb(255, 249, 168);
 }
-
+.a{
+    position: relative;
+    z-index: 1900;
+}
 .icon{
     height:50px;
     width:50px;
@@ -141,6 +144,7 @@ background-size: 100%;
 background-repeat: repeat-y;
 border-radius: 10px; 
 box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
+margin-top:1%;
 margin-right:1%;
 }
 .header{ 
@@ -150,6 +154,9 @@ justify-content: space-between;
 padding: 10px; 
 }
 .monthYear{ 
+font-family: "Yeseva One", serif;
+font-weight: 100;
+ font-style: normal;
 text-transform: uppercase;
 text-align:center ; 
 font-weight: 600;
@@ -211,7 +218,6 @@ color:#fff;
 }
 .date.inactive{
 color: #d2d2d2;
-background:none;
 }
 /* Стиль для активного (сегодняшнего) дня */
 .date.active {
@@ -285,7 +291,6 @@ background:none;
     background-color: #ffa42e83
 }
 .today-notes-widget {
-    display: none;
     position: fixed;
     top: 12%;
     right: 20px;
@@ -348,17 +353,18 @@ background:none;
 /* Стили для постоянного окна заметок выбранного дня */
 .selected-day-notes {
     position: fixed;
-    top: 12.5%;
+    bottom: 2vh;
     right: 20px;
     max-height: 90%;
-    width: 22%;
+    width: 20%;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 3vh;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 998;
-    overflow-y: auto;}
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 998; /* Ниже виджета сегодняшних заметок */
+    overflow-y: auto;
+}
 
 .selected-day-notes h3 {
     margin-top: 0;
@@ -375,7 +381,7 @@ background:none;
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 15px;
-    min-height: 5vh;
+    min-height: 100px;
     white-space: pre-wrap;
     word-wrap: break-word;
     font-family: inherit;
@@ -407,6 +413,76 @@ background:none;
     background-color: rgb(141, 158, 103);
 }
 
+/* Стили для гамбургер меню */
+.hamburger-menu {
+    position: absolute;
+    right: 1vw;
+    z-index: 1999; /* Добавь эту строку */
+    
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60px;
+    height: 45px;
+    background-color: rgb(102, 101, 80);
+    border-radius: 5px;
+}
+
+.hamburger-btn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #f8ead7;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.hamburger-btn:hover span {
+    background-color: #ffc558;
+}
+.hamburger-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #464e33;
+    min-width: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 1002; /* Увеличь z-index */
+    padding: 10px 0;
+}
+
+.hamburger-content.show {
+    display: block;
+}
+
+.menu-link {
+    display: block;
+    padding: 12px 20px;
+    color: #f8ead7;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: 0.3s;
+    border-bottom: 1px solid rgba(248, 234, 215, 0.1);
+}
+
+.menu-link:last-child {
+    border-bottom: none;
+}
+
+.menu-link:hover {
+    background-color: rgb(102, 101, 80);
+    color: #ffc558;
+}
+
 @media (max-aspect-ratio: 1610/816) {
 #nahida {
 width:0px;
@@ -415,17 +491,169 @@ border: none;
 .calendar{
     width: 70%;
     left:5vw;
+    z-index: 5;
  }
+ .hamburger-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #464e33;
+    min-width: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 1300; /* Увеличь z-index */
+    padding: 10px 0;
+}
+}
+.project-shadow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none; /* Скрыто по умолчанию */
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.project-data{
+    display: grid;
+    grid-template-columns:40vh 60vh;
+    position: relative;
+    height: 60vh;
+    width: 60vw;
+    background-color: #ccc;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
+    background-image: linear-gradient(rgb(230, 213, 201), white);
+}
+#cross,
+#CloseProjectshadow{
+    color: #ffc558;
+    background-color: brown;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    cursor: pointer;
+    position: absolute;
+    right:3vh;
+    top:3vh;
+    height: 3vh;
+    aspect-ratio:1/1;
+    border:none;
+}
+.qr{
+    height: 40vh;
+    border-radius: 2vh;
+    aspect-ratio: 1 / 1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#auth{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none; /* Скрыто по умолчанию */
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+.auth-content{
+    max-width: 80vw;
+    width: 450px;
+    height:40vh;
+    position: relative;
+    background-color: #ccc;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
+    background-color: #464e33;
+    display: flex;
+    justify-content: space-evenly;
+}
+#username{
+    position: relative;
+    width:80%;
+    left:10%;
+}
+#password{
+    position: relative;
+    width:80%;
+    left:10%;
+}
+.auth-btn{
+    position:absolute;
+    left:80vw;
+    top:2.5vh;
+    width: 190px;
+    height: 45px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: rgb(102, 101, 80);
+    border-radius: 5px;
+}
+.auth-btn p{
+    color: #f8ead7;
+    font-family: "Yeseva One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.4em;
+}
+.auth-content label{
+    color: #f8ead7;
+}
+.auth-content p{
+    color: #f8ead7;
+    position: absolute;
+    top: 3%;
+    text-align: center;
+}
+.input-button{
+    position: absolute;
+    background-color: rgb(255, 214, 80);
+    color: #2e3d13;
+    border-radius: 5px;
+    border: none;
+    width:60%;
+    left:20%;
+    bottom: 2%;
 }
 @media (max-aspect-ratio: 1007/1394) {
-.dates{
+    .auth-content{
+         max-width:none;
+         width: 90vw;
+        }
+    .dates{
 grid-template-columns: repeat(7); 
 }
     main { 
 justify-content:unset;
 align-items: unset; 
 }
-   
+    .today-notes-widget {
+       top: auto; right: auto;
+        left:5vw;
+       bottom:0;
+       height: 17vh;
+       max-height: 35%;
+       width: 90%;
+    }
     .selected-day-notes {
         top: auto;
         right: auto;
@@ -436,15 +664,21 @@ align-items: unset;
         max-height: none;
         width: 90%;
         margin-bottom: 1vh;
+    }    
+    .today-notes-widget {
+        position: static;
+        margin-bottom: 20px;
+        margin-left: 5vw;
+        height: auto;
+        max-height: none;
+        width: 90%;
     }
-    
-
     
     .calendar {
         margin-bottom: 20px;
         height: 65vh;
-        left:5vw;
-        width: 90%; 
+        left: 5vw;
+        width: 90%;
     }
  .monthYear{
     font-size: 2.5vh;
@@ -459,6 +693,14 @@ align-items: unset;
     margin-bottom:3vh;
     width:3vh;
 } 
+
+.hamburger-menu {
+    margin-right: 10px;
 }
 
-
+.hamburger-content {
+    right: 0;
+    left: auto;
+    min-width: 180px;
+}
+}
