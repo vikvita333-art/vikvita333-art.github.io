@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=BBH+Sans+Bartle&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
      <link  href=”/star.png” type="short icon">
 <title>akasha-time-manager</title> 
 </head>
@@ -30,17 +31,28 @@
 <header class="a">
      <img src='star.png' border='0' alt='star' class="icon"/></a>
     <h1 class="akasha">AKASHA</h1>
+    <!-- Гамбургер меню -->
+    <div class="hamburger-menu">
+        <button class="hamburger-btn" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+        </button>
+        <div class="hamburger-content" id="hamburgerContent">
+        <div class="auth">
+            <a class="menu-link" id="authBtn">Авторизация/вход</a>
+        
+            <a href="#" class="menu-link" id="menuLink2">Ссылка 2</a>
+            <a href="#" class="menu-link" id="menuLink3">Данные о проекте</a>
+            <a href="#" class="menu-link" id="syncBtn">Синхронизировать с сервером</a>
+            <a href="#" class="menu-link" id="logoutBtn">Выйти</a>
+        </div>
+    </div>
+    
 </header>
-
     <video src="video_2025-10-11_18-12-40.mp4" muted autoplay loop id="nahida"></video>
     <main>
         <div class="calendar">
-        <div class="today-notes-widget" id="todayNotesWidget">
-            <h3>Список дел путешественника <br>(<span id="todayDateWidget"></span>):</h3>
-            <ul id="todayNotesList">
-                <li>На сегодня дел нет! Выходной!</li>
-            </ul>
-        </div>
         <div class="header">
             <button id="prevBtn"> 
                 <i class="fa-solid fa-chevron-left"></i> 
@@ -62,7 +74,19 @@
         <div class="dates" id="dates"></div>
     
 </div> 
-
+<div id="auth" >
+<div class="auth-content" id="authContent">
+    <form action="/submit" method="post">
+        <p style="left:1vw;">Введите данные для входа/регистрации</p>
+        <label for="username" style="position: relative;left:1vw;">Имя пользователя:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password"style="position:relative;left:1vw;">Пароль:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" class="input-button" value="Войти">
+      </form>
+      <button id="cross">×</button>
+</div>
+</div>
 <!-- Окно для заметок выбранного дня -->
 <div class="selected-day-notes" id="selectedDayNotes">
     <h3>Заметки на <span id="selectedDateDisplay"></span>:</h3>
@@ -85,8 +109,15 @@
         </div>
     </div>
 </div>
-
+<div class="project-shadow" id="Projectshadow">
+<div class="project-data" id="Projectdata">
+    <img src="qr-code (1).webp" class="qr">
+    <p class="textqr">Данный проект является курсовой работой студента Р. Марии Анатольевной.</p>
+    <button id="CloseProjectshadow">×</button>
+</div>
+</div>
 <script src="1.js"></script>
 </main> 
 </body>
+
 </html>
