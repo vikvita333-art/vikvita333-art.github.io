@@ -303,7 +303,7 @@ CloseProjectshadow.addEventListener('click', (event) => {
     hamburgerContent.classList.remove('show');
 });
 // === GitHub API функции ===
-const GITHUB_TOKEN = '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'; // Нужно будет создать Personal Access Token
+const GITHUB_TOKEN = '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'; // Нужно будет создать Personal Access Token
 const GITHUB_USERNAME = 'vikvita333-art';
 const REPO_NAME = 'akasha-calendar-data';
 const DATA_FILE = 'users-data.json';
@@ -643,4 +643,5 @@ loadNotes();
 updateCalendar();
 updateSelectedDayNotes(formatDateToISO(new Date()));
 checkAuthAndSync(); // Добавь этот вызов
+
 
