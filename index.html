@@ -3,7 +3,7 @@
 <head> 
 <meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<link rel="manifest" crossorigin="use-credentials" href="/manifest.json">
+<!-- Удален service worker для локальной работы -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
 <link rel="stylesheet" href="style.css"> 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,112 +11,113 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=BBH+Sans+Bartle&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
-     <link  href=”/star.png” type="short icon">
+<link rel="icon" href="star.png" type="image/png">
 <title>akasha-time-manager</title> 
 </head>
 <body>
-    <script>
- if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('Service Worker зарегистрирован с областью:', registration.scope);
-      }).catch(error => {
-        console.error('Ошибка регистрации Service Worker:', error);
-      });
-  });
-}
-</script>
-<div class="grid1">
-<header class="a">
-     <img src='star.png' border='0' alt='star' class="icon"/></a>
-    <h1 class="akasha">AKASHA</h1>
-    <!-- Гамбургер меню -->
-    <div class="hamburger-menu">
-        <button class="hamburger-btn" id="hamburgerBtn">
+    <!-- Удален скрипт service worker -->
+    <div class="grid1">
+    <header class="a">
+        <img src='star.png' alt='star' class="icon"/>
+        <h1 class="akasha">AKASHA</h1>
+        <!-- Гамбургер меню -->
+        <div class="hamburger-menu">
+            <button class="hamburger-btn" id="hamburgerBtn">
                 <span></span>
                 <span></span>
                 <span></span>
-        </button>
-        <div class="hamburger-content" id="hamburgerContent">
-        <div class="auth">
-            <a class="menu-link" id="authBtn">Авторизация/вход</a>
-            <a href="#" class="menu-link" id="menuLink3">Данные о проекте</a>
-            <a href="#" class="menu-link" id="syncBtn">Синхронизировать с сервером</a>
-            <a href="#" class="menu-link" id="logoutBtn">Выйти</a>
+            </button>
+            <div class="hamburger-content" id="hamburgerContent">
+                <div class="auth">
+                    <a href="#" class="menu-link" id="menuLink3">Данные о проекте</a>
+                    <a href="#" class="menu-link" id="loginBtn">Войти через Google</a>
+                    <a href="#" class="menu-link" id="logoutBtn" style="display: none;">Выйти</a>
+                    <a href="#" class="menu-link" id="syncBtn" style="display: none;">Синхронизировать</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </header>
     
-</header>
     <video src="video_2025-10-11_18-12-40.mp4" muted autoplay loop id="nahida"></video>
+    
     <main>
         <div class="calendar">
-        <div class="header">
-            <button id="prevBtn"> 
-                <i class="fa-solid fa-chevron-left"></i> 
-            </button> 
-            <div class="monthYear" id="monthYear"></div> 
-            <button id="nextBtn"> 
-                <i class="fa-solid fa-chevron-right"></i> 
-            </button>
-        </div> 
-        <div class="days"> 
-            <div class="day">Пон</div> 
-            <div class="day">Втр</div> 
-            <div class="day">Срд</div> 
-            <div class="day">Чтв</div> 
-            <div class="day">Птн</div> 
-            <div class="day">Сбт</div> 
-            <div class="day">Вск</div> 
-        </div> 
-        <div class="dates" id="dates"></div>
-    
-</div> 
-<div id="auth" >
-<div class="auth-content" id="authContent">
-    <form action="/submit" method="post">
-        <p style="left:1vw;">Введите данные для входа/регистрации</p>
-        <label for="username" style="position: relative;left:1vw;">Имя пользователя:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password"style="position:relative;left:1vw;">Пароль:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <input type="submit" class="input-button" value="Войти">
-      </form>
-      <button id="cross">×</button>
-</div>
-</div>
-<!-- Окно для заметок выбранного дня -->
-<div class="selected-day-notes" id="selectedDayNotes">
-    <h3>Заметки на <span id="selectedDateDisplay"></span>:</h3>
-    <div id="selectedNoteContent" class="note-content">
-        <p>Выберите дату для просмотра заметок</p>
-    </div>
-    <div class="modal-buttons">
-        <button id="editSelectedNoteBtn" style="display: none;">Редактировать заметку</button>
-    </div>
-</div>
-
-<!-- Модальное окно для редактирования заметки -->
-<div class="note-modal" id="noteModal">
-    <div class="modal-content">
-        <h3 id="noteDateDisplay">Заметка для: </h3>
-        <textarea id="noteInput" placeholder="Введите вашу заметку здесь..." rows="5"></textarea>
-        <div class="modal-buttons">
-            <button id="saveNoteBtn">Сохранить</button>
-            <button id="cancelNoteBtn">Отмена</button>
+            <div class="header">
+                <button id="prevBtn"> 
+                    <i class="fa-solid fa-chevron-left"></i> 
+                </button> 
+                <div class="monthYear" id="monthYear"></div> 
+                <button id="nextBtn"> 
+                    <i class="fa-solid fa-chevron-right"></i> 
+                </button>
+            </div> 
+            <div class="days"> 
+                <div class="day">Пон</div> 
+                <div class="day">Втр</div> 
+                <div class="day">Срд</div> 
+                <div class="day">Чтв</div> 
+                <div class="day">Птн</div> 
+                <div class="day">Сбт</div> 
+                <div class="day">Вск</div> 
+            </div> 
+            <div class="dates" id="dates"></div>
         </div>
-    </div>
-</div>
-<div class="project-shadow" id="Projectshadow">
-<div class="project-data" id="Projectdata">
-    <img src="qr-code (1).webp" class="qr">
-    <p class="textqr">Данный проект является курсовой работой студента Р. Марии Анатольевной.</p>
-    <button id="CloseProjectshadow">×</button>
-</div>
-</div>
-<script src="1.js"></script>
-</main> 
+        
+        <!-- Виджет заметок на сегодня -->
+        <div class="today-notes-widget" id="todayNotesWidget">
+            <h3>Заметки на сегодня: <span id="todayDateWidget"></span></h3>
+            <ul id="todayNotesList"></ul>
+        </div>
+        
+        <!-- Окно для заметок выбранного дня -->
+        <div class="selected-day-notes" id="selectedDayNotes">
+            <h3>Заметки на <span id="selectedDateDisplay"></span>:</h3>
+            <div id="selectedNoteContent" class="note-content">
+                <p>Выберите дату для просмотра заметок</p>
+            </div>
+            <div class="modal-buttons">
+                <button id="editSelectedNoteBtn" style="display: none;">Редактировать заметку</button>
+            </div>
+        </div>
+
+        <!-- Модальное окно для редактирования заметки -->
+        <div class="note-modal" id="noteModal">
+            <div class="modal-content">
+                <h3 id="noteDateDisplay">Заметка для: </h3>
+                <textarea id="noteInput" placeholder="Введите вашу заметку здесь..." rows="5"></textarea>
+                <div class="modal-buttons">
+                    <button id="saveNoteBtn">Сохранить</button>
+                    <button id="cancelNoteBtn">Отмена</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-shadow" id="Projectshadow">
+            <div class="project-data" id="Projectdata">
+                <img src="qr-code (1).webp" class="qr">
+                <p class="textqr">Данный проект является курсовой работой студента Р. Марии Анатольевной.</p>
+                <button id="CloseProjectshadow">×</button>
+            </div>
+        </div>
+        
+        <!-- Удалено auth окно, так как не используется -->
+    </main>
+    
+    <script src="1.js"></script>
+    <!-- Загружаем Google API только если не локально -->
+    <script>
+        if (window.location.protocol !== 'file:') {
+            var script = document.createElement('script');
+            script.src = 'https://apis.google.com/js/api.js';
+            script.onload = function() {
+                if (typeof gapi !== 'undefined') {
+                    gapi.load('client:auth2', function() {
+                        console.log('Google API загружен, но для работы нужен HTTPS');
+                    });
+                }
+            };
+            document.head.appendChild(script);
+        }
+    </script>
 </body>
-
 </html>
-
