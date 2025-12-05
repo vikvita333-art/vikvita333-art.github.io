@@ -109,15 +109,9 @@
         if (window.location.protocol !== 'file:') {
             var script = document.createElement('script');
             script.src = 'https://apis.google.com/js/api.js';
-            script.onload = function() {
-                if (typeof gapi !== 'undefined') {
-                    gapi.load('client:auth2', function() {
-                        console.log('Google API загружен, но для работы нужен HTTPS');
-                    });
-                }
-            };
             document.head.appendChild(script);
         }
     </script>
 </body>
 </html>
+
