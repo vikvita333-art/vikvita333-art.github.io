@@ -522,6 +522,7 @@ main {
     aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
+    align-item: center;
     top:1vh;
     position: absolute;
 }
@@ -643,6 +644,11 @@ main {
         right: 0;
         left: auto;
         min-width: 180px;
+    }
+}
+@media (max-aspect-ratio: 843/676) {
+    #hihidadata{
+        height: 340px;
     }
 }
 
