@@ -491,7 +491,46 @@ main {
     box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
     background-image: linear-gradient(rgb(230, 213, 201), white);
 }
-
+#hihidashadow{
+   position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none; /* Скрыто по умолчанию */
+    align-items: center;
+    justify-content: center;
+    z-index: 2500; 
+}
+.hihida-data{
+    display: grid;
+    grid-template-rows:50% 50%;
+    position: relative;
+    height: 60vh;
+    width: 40vw;
+    background-color: #ccc;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
+    background-image: linear-gradient(rgb(230, 213, 201), white);
+}
+.hihida{
+    height: 30vh;
+    border: 2vh;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    top:1vh;
+    position: absolute;
+}
+.texthih{
+ justify-content: center;
+    bottom:1vh;
+    position: absolute;
+}
+#CloseProjectshadow1,
 #CloseProjectshadow{
     color: #ffc558;
     background-color: brown;
@@ -606,3 +645,4 @@ main {
         min-width: 180px;
     }
 }
+
