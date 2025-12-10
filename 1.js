@@ -324,9 +324,16 @@ function initApp() {
     
     console.log('Приложение инициализировано');
 }
+nahida.addEventListener('click', () => {
+hihidashadow.style.display = 'flex';
+});
+CloseProjectshadow1.addEventListener('click', () => {
+hihidashadow.style.display = 'none';
+});
 
 // === НАЧАЛЬНАЯ ЗАГРУЗКА ===
 console.log('Загрузка приложения...');
 
 // Работаем только в локальном режиме (без Google API)
 initApp();
+
