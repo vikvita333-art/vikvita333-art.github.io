@@ -523,6 +523,7 @@ main {
     display: flex;
     justify-content: center;
     align-item: center;
+    margin: 0 auto;
     top:1vh;
     position: absolute;
 }
@@ -651,4 +652,5 @@ main {
         height: 340px;
     }
 }
+
 
