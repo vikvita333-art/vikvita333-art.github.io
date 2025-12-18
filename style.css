@@ -506,23 +506,19 @@ main {
     display: grid;
     grid-template-rows:50% 50%;
     position: relative;
-    height: 60vh;
-    width: 40vw;
+    height: 80vh;
+    width: 80vw;
     background-color: #ccc;
-    justify-content: center;
-    align-items: center;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(80, 50, 9, 0.3);
     background-image: linear-gradient(rgb(230, 213, 201), white);
     place-items: center;
 }
 .hihida{
-    height: 30vh;
+    height: 50%;
     border: 2vh;
     aspect-ratio: 1 / 1;
     display: flex;
-    justify-content: center;
-    align-item: center;
     margin: 0 auto;
     top:1vh;
     position: absolute;
@@ -558,11 +554,22 @@ main {
     align-items: center;
     justify-content: center;
 }
+#menuLink2{
+    display: none;
+}
+.textqr{
+    width:80%;
+    line-height:1.5;
+    font-size: 24px;
+}
 
 @media (max-aspect-ratio: 1610/816) {
     #nahida {
         width:0px;
         border: none;
+    }
+    #menuLink2{
+        display: flex;
     }
     .calendar{
         width: 70%;
@@ -581,11 +588,6 @@ main {
         z-index: 1300;
         padding: 10px 0;
     }
-}
-.textqr{
-    width:80%;
-    line-height:1.5;
-    font-size: 24px;
 }
 
 @media (max-aspect-ratio: 1007/1394) {
@@ -655,10 +657,10 @@ main {
    
 
 }
-@media (max-aspect-ratio: 843/676) {
-    #hihidadata{
-        height: 340px;
-    }
+@media (max-aspect-ratio: 1200/650) {
+ .today-notes-widget{
+     display: none;
+ }   
 }
 @media (max-aspect-ratio: 630/650) {
     .project-data{
