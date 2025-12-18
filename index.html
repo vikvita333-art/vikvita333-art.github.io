@@ -3,7 +3,7 @@
 <head> 
 <meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<!-- Удален service worker для локальной работы -->
+<link rel="manifest" crossorigin="use-credentials" href="/manifest.json">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
 <link rel="stylesheet" href="style.css"> 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,18 @@
 <title>akasha-time-manager</title> 
 </head>
 <body>
-    <!-- Удален скрипт service worker -->
+    <script>
+ if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('Service Worker зарегистрирован с областью:', registration.scope);
+      }).catch(error => {
+        console.error('Ошибка регистрации Service Worker:', error);
+      });
+  });
+}
+</script>
     <div class="grid1">
     <header class="a">
         <img src='star.png' alt='star' class="icon"/>
@@ -113,6 +124,7 @@
     <script src="1.js"></script>
 </body>
 </html>
+
 
 
 
