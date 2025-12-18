@@ -324,6 +324,9 @@ function initApp() {
     
     console.log('Приложение инициализировано');
 }
+menuLink2.addEventListener('click', () => {
+    hihidashadow.style.display = 'flex';
+    });
 nahida.addEventListener('click', () => {
 hihidashadow.style.display = 'flex';
 });
