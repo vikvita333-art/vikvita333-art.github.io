@@ -561,6 +561,13 @@ main {
     width:80%;
     line-height:1.5;
     font-size: 24px;
+    color: rgb(68, 13, 13);
+}
+.textqr a{
+    color:rgb(68, 13, 13);
+}
+.textqr a:hover{
+    color:rgb(185, 137, 82);
 }
 
 @media (max-aspect-ratio: 1610/816) {
@@ -676,6 +683,7 @@ main {
         width:60%;
     }
 }
+
 
 
 
