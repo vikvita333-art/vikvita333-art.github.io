@@ -681,8 +681,10 @@ main {
     }
     .textqr{
         width:80%;
+        font-size: 1.2em;
     }
 }
+
 
 
 
